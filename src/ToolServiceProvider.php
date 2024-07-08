@@ -34,10 +34,10 @@ class ToolServiceProvider extends ServiceProvider
             return;
         }
 
-        Nova::router(['nova', Authorize::class], config('nova-command-runner.path', 'command-runner'))
+        Nova::router(['nova','admin', Authorize::class], config('nova-command-runner.path', 'command-runner'))
             ->group(__DIR__ . '/../routes/inertia.php');
 
-        Route::middleware(['nova', Authorize::class])
+        Route::middleware(['nova','admin', Authorize::class])
             ->prefix('nova-vendor/stepanenko3/nova-command-runner')
             ->group(__DIR__ . '/../routes/api.php');
     }
